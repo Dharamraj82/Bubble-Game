@@ -8,20 +8,31 @@ const bubblelog=()=>{
     document.querySelector("#bottom").innerHTML = button;
 }
 
-var timer = 30;
-const runTimer=()=>{
-   const time = setInterval(()=>{
-        if(timer > 0){
+var timer = 15;
+const runTimer = () => {
+    const time = setInterval(() => {
+        if (timer > 0) {
             timer--;
-            document.querySelector("#timer").innerHTML = timer;   
-        }
-        else{
+            document.querySelector("#timer").innerHTML = timer;
+        } else {
             clearInterval(time);
-            document.querySelector("#bottom").innerHTML = `<h1>Game Over Bro!</h1> <br> 
-             <h2 style="color: yellow;">Your Score: ${score}</h2>`;
+            document.querySelector("#bottom").innerHTML = `
+                <h1>Game Over Bro!</h1> <br>
+                <h2 style="color: yellow;">Your Score: ${score}</h2>
+                <button id="resetb" style="font-size: 20px; padding: 5px 13px; font-weight: 700; border-radius: 3px; border: none; background-color: rgb(255, 255, 255); color: rgb(255, 0, 0);">Try Again</button>
+                 <div style="display: flex; gap: 10px;"><h2 style="font-size: 30px; color: #000;">Timer- </h2><input type="range" id="timerRange" step="5" min="0" max="120" value="25">
+                 <span id="timersec" style="font-size: 25px; color: blue;"></span></div>`;
+                 const updateTimerSec = () => {
+                    const timerRange = document.getElementById("timerRange");
+                    const timerSec = document.getElementById("timersec");
+                    timerSec.innerHTML = `${timerRange.value} Sec`;
+                    };
+                document.getElementById("timerRange").addEventListener("input", updateTimerSec);
+                updateTimerSec();
+            document.querySelector("#resetb").addEventListener("click", reset);
         }
-    }, 1000)
-} 
+    }, 1000);
+};
 
 
 var hitNum = 0;
@@ -46,6 +57,15 @@ const increaseScore=()=>{
             bubblelog();
         }
     })
+
+const reset=()=>{
+    score = 0;
+    timer = parseInt(document.getElementById("timerRange").value, 10);
+    hitNum = 0;
+    bubblelog();
+    runTimer();
+    hitTime();
+}
 
 bubblelog();
 runTimer();
