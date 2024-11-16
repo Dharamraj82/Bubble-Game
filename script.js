@@ -8,7 +8,7 @@ const bubblelog=()=>{
     document.querySelector("#bottom").innerHTML = button;
 }
 
-var timer = 6;
+var timer = 30;
 const runTimer=()=>{
    const time = setInterval(()=>{
         if(timer > 0){
