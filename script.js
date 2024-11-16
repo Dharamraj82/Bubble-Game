@@ -1,7 +1,7 @@
 const bubblelog=()=>{
     let button = " ";
     var number = 0;
-    for(var i = 0; i<=206; i++){
+    for(var i = 0; i<=210; i++){
         number = Math.floor(Math.random()*10);
         button +=`<div class="bubble">${number}</div>`
     }
