@@ -1,14 +1,14 @@
 const bubblelog=()=>{
     let button = " ";
     var number = 0;
-    for(var i = 0; i<=189; i++){
+    for(var i = 0; i<=206; i++){
         number = Math.floor(Math.random()*10);
         button +=`<div class="bubble">${number}</div>`
     }
     document.querySelector("#bottom").innerHTML = button;
 }
 
-var timer = 60;
+var timer = 6;
 const runTimer=()=>{
    const time = setInterval(()=>{
         if(timer > 0){
@@ -17,7 +17,7 @@ const runTimer=()=>{
         }
         else{
             clearInterval(time);
-            document.querySelector("#bottom").innerHTML = `<h1>Game Over Bro!</h1> 
+            document.querySelector("#bottom").innerHTML = `<h1>Game Over Bro!</h1> <br> 
              <h2 style="color: yellow;">Your Score: ${score}</h2>`;
         }
     }, 1000)
